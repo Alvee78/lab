@@ -2,7 +2,6 @@
 
 ## ARM APSR Flag Detection using STM32F103C8T6
 
----
 
 ## Project Overview
 
@@ -10,7 +9,6 @@ This project demonstrates how to manually test and observe ARM processor status 
 
 The program performs arithmetic and saturation operations, then reads the Application Program Status Register (APSR) to detect different flags and indicate their status using LEDs.
 
----
 
 ## Objectives
 
@@ -19,7 +17,6 @@ The program performs arithmetic and saturation operations, then reads the Applic
 * Interface GPIO registers directly (bare-metal programming)
 * Visualize processor flags using LEDs
 
----
 
 ## Development Environment
 
@@ -28,7 +25,7 @@ The program performs arithmetic and saturation operations, then reads the Applic
 * Language: C with ARM Inline Assembly
 * Programming Type: Bare-metal (no HAL/LL libraries used)
 
----
+
 
 ## Hardware Setup
 
@@ -41,7 +38,6 @@ The program performs arithmetic and saturation operations, then reads the Applic
   * PA11 → V flag
   * PA12 → Q flag
 
----
 
 ## Concept: APSR Flags
 
@@ -55,7 +51,7 @@ The ARM Cortex-M3 processor maintains condition flags inside the APSR register:
 | V    | 28  | Overflow        |
 | Q    | 27  | Saturation      |
 
----
+
 
 ## Program Explanation
 
@@ -72,7 +68,7 @@ MSR APSR_nzcvq, R0
 
 All flags are cleared before testing.
 
----
+
 
 ### 3. Z Flag Test
 
@@ -83,7 +79,7 @@ SUBS a, b
 * When `a == b`, result = 0 → Z flag set
 * LED on PA9 turns ON
 
----
+
 
 ### 4. N Flag Test
 
@@ -94,7 +90,7 @@ SUBS a, b
 * Negative result sets N flag
 * LED on PA8 turns ON
 
----
+
 
 ### 5. C Flag Test
 
@@ -105,7 +101,7 @@ SUBS a, b
 * Generates carry
 * LED on PA10 turns ON
 
----
+
 
 ### 6. V Flag Test (Overflow)
 
@@ -116,7 +112,7 @@ SUBS a, b
 * Signed overflow occurs
 * LED on PA11 turns ON
 
----
+
 
 ### 7. Q Flag Test (Saturation)
 
@@ -127,7 +123,7 @@ SSAT R1, #7, R0
 * Saturation triggers Q flag
 * LED on PA12 turns ON
 
----
+
 
 ## Key Functions
 
@@ -148,7 +144,7 @@ void select_mode_output();
 
 Simple software delay using loop.
 
----
+
 
 ## How to Run
 
@@ -157,7 +153,7 @@ Simple software delay using loop.
 3. Flash it to STM32F103C8T6
 4. Observe LEDs corresponding to each flag
 
----
+
 
 ## Expected Output
 
@@ -169,7 +165,7 @@ Simple software delay using loop.
 | V flag set | PA11 | ON     |
 | Q flag set | PA12 | ON     |
 
----
+
 
 ## Learning Outcomes
 
@@ -178,7 +174,7 @@ Simple software delay using loop.
 * Understanding low-level CPU flags
 * Debugging embedded systems without high-level libraries
 
----
+
 
 ## Notes
 
@@ -186,14 +182,12 @@ Simple software delay using loop.
 * Ensure correct LED wiring to avoid hardware damage
 * APSR flags are updated only by specific instructions (e.g., ADDS, SUBS)
 
----
 
 ## Course Information
 
-* Course: Microcontroller Lab
+* Course: CSE3232 Microcontroller Programming Lab
 * Level: Undergraduate (CSE)
 
----
 
 ## Conclusion
 
